@@ -1,4 +1,4 @@
-import { AuthModel, UserModel } from "../models/userModel.js";
+import { AuthModel,  } from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 
 export const updateUserProfile = async (req, res, next) => {
@@ -12,10 +12,10 @@ export const updateUserProfile = async (req, res, next) => {
     const findUser = await AuthModel.findOne({ _id: decoded.id });
     if (!findUser) throw new Error("Invalid token");
 
-    const update = await UserModel.create({
-      user_id: findUser._id,
-      ...UpdateProfile,
-    });
+    // const update = await UserModel.create({
+    //   user_id: findUser._id,
+    //   ...UpdateProfile,
+    // });
     res.status(200).json({
       status: true,
       message: "Successfully Updated Pofile",

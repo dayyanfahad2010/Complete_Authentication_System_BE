@@ -15,27 +15,17 @@ const authSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
-const userSchema = new mongoose.Schema({
-  user_id: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
-    type: String,
-  },
-  bio: {
-    type: String,
-  },
-  age: {
-    type: Number,
+  
+  password_reset_otp: String,
+  password_reset_otpExpiry: Date,
+  
+  email_verification_otp: String,
+  email_verification_otpExpiry: Date,
+  
+  isVerified: {
+    type: Boolean,
+    default: false,
   },
 });
 
-export const UserModel = mongoose.model("userProfile",userSchema);
-export const AuthModel = mongoose.model("userAuths",authSchema);
+export const AuthModel = mongoose.model("userAuths", authSchema);
